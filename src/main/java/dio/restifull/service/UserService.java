@@ -7,7 +7,7 @@ import dio.restifull.model.User;
 
 public interface UserService {
 
-    User findById(long id);
+    User findById(Long id);
 
     User create(User userToCreate);
     

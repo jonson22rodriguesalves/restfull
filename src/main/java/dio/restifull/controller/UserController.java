@@ -2,6 +2,7 @@ package dio.restifull.controller;
 
 import dio.restifull.model.User;
 import dio.restifull.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +15,7 @@ import java.net.URI;
 
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 
   private final UserService userService;
@@ -31,7 +32,7 @@ public class UserController {
   }
 
   @PostMapping
-  public ResponseEntity<User> create(@RequestBody User usertoCreate){
+  public ResponseEntity<User> create(@Valid @RequestBody User usertoCreate){
     var userCreated = userService.create(usertoCreate);
     URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                   .path("/{id}")

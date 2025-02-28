@@ -17,14 +17,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findById(long id) {
+    public User findById(Long id) {
         return userRepository.findById(id).orElseThrow(NoSuchElementException::new);
     }
 
     @Override
     public User create(User userToCreate) {
-        if (userRepository.existsByAccountNumber(userToCreate.getAccount().getNumber())) {
-  throw new IllegalArgumentException("The User ID already exists");
+        if (userRepository.existsByAccount_Number(userToCreate.getAccount().getNumber())) {
+            throw new IllegalArgumentException("The User ID already exists");
         }
         return userRepository.save(userToCreate);
     }

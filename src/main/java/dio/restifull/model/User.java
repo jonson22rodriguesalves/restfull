@@ -10,6 +10,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 
 @Entity(name = "tb_user")
@@ -18,19 +22,29 @@ public class User {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)    
-        private long id;
+        private Long id;
 
+        @NotBlank(message = "Nome não pode estar em branco")
+        @Size(min = 3, max = 100, message = "Nome deve ter entre 3 e 100 caracteres")
         private String name;
 
+        @Valid
+        @NotNull(message = "Conta não pode ser nula")
         @OneToOne(cascade = CascadeType.ALL)
         private Account account;
-
+             
+        @Valid
+        @NotNull(message = "Cartão não pode ser nulo")
         @OneToOne(cascade = CascadeType.ALL)
         private Card card;
 
+        @Valid
+        @NotNull(message = "Lista de features não pode ser nula")
         @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
         private List<Feature> features;
         
+        @Valid
+        @NotNull(message = "Lista de notícias não pode ser nula")
         @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
         private List<News> news;
 
