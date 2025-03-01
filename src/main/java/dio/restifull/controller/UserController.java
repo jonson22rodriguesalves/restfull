@@ -1,6 +1,6 @@
 package dio.restifull.controller;
 
-import dio.restifull.model.User;
+import dio.restifull.domain.model.User;
 import dio.restifull.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;

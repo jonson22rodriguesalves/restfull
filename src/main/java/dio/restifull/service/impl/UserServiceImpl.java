@@ -1,7 +1,7 @@
 package dio.restifull.service.impl;
 
-import dio.restifull.model.User;
-import dio.restifull.repository.UserRepository;
+import dio.restifull.domain.model.User;
+import dio.restifull.domain.repository.UserRepository;
 import dio.restifull.service.UserService;
 import java.util.NoSuchElementException;
 import org.springframework.stereotype.Service;
@@ -23,8 +23,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User create(User userToCreate) {
-        if (userRepository.existsByAccount_Number(userToCreate.getAccount().getNumber())) {
-            throw new IllegalArgumentException("The User ID already exists");
+        if (userRepository.existsByAccountNumber(userToCreate.getAccount().getNumber())) {
+            throw new IllegalArgumentException("This Account number already exists.");
         }
         return userRepository.save(userToCreate);
     }

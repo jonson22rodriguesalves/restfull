@@ -1,14 +1,15 @@
-package dio.restifull.repository;
+package dio.restifull.domain.repository;
 
-import dio.restifull.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import dio.restifull.domain.model.User;
 
 
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    boolean existsByAccount_Number(String Number);
+    boolean existsByAccountNumber(String accountNumber);
   
 }

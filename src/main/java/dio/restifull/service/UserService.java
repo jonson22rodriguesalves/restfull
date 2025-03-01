@@ -1,6 +1,6 @@
 package dio.restifull.service;
 
-import dio.restifull.model.User;
+import dio.restifull.domain.model.User;
 
 
 
