@@ -8,21 +8,21 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-@Entity
+@Entity(name = "tb_produt") // Adicionado o nome da tabela
 public class Produt {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "O nome não pode estar em branco")
-    @Size(min = 3, max = 255, message = "O nome deve ter entre 3 e 255 caracteres")
+    @NotBlank(message = "Nome do produto não pode estar em branco")
+    @Size(min = 3, max = 255, message = "Nome do produto deve ter entre 3 e 255 caracteres")
     private String nome;
 
-    @Size(max = 1000, message = "A descrição não pode ter mais de 1000 caracteres")
+    @Size(max = 1000, message = "Descrição do produto não pode ter mais de 1000 caracteres")
     private String descricao;
 
-    @NotNull(message = "O preço não pode ser nulo")
+    @NotNull(message = "Preço do produto não pode ser nulo")
     private double preco;
 
     // Construtores, getters e setters
