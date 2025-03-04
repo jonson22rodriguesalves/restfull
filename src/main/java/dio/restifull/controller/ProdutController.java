@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.util.List;
 
 @RestController
@@ -50,8 +49,12 @@ public class ProdutController {
     public ResponseEntity<Void> deletarProdut(@PathVariable Long id) {
         if (!produtRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
+
         }
+
         produtRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+
 }

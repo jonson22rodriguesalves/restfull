@@ -8,6 +8,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.Valid;
@@ -15,9 +16,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-
 @Entity(name = "tb_user")
-
 public class User {
 
     @Id
@@ -47,6 +46,11 @@ public class User {
     @NotNull(message = "Lista de notícias não pode ser nula")
     @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private List<News> news;
+
+    @ManyToMany(mappedBy = "users") // Alterado para ManyToMany
+    private List<Produt> produtos;
+
+    // ... (outros métodos)
 
     public Long getId() {
         return id;
@@ -96,6 +100,11 @@ public class User {
         this.news = news;
     }
 
+    public List<Produt> getProdutos() {
+        return produtos;
+    }
 
-
+    public void setProdutos(List<Produt> produtos) {
+        this.produtos = produtos;
+    }
 }
