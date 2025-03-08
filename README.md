@@ -430,7 +430,7 @@ Exemplo de Resposta JSON:
 "description": "Previdencia Complementar"
 }
 
-4. Observações
+4. Observações:
    Certifique-se de substituir os valores de exemplo pelos dados reais que você deseja usar.
    A API pode retornar outros códigos de status em caso de erros, como 400 (Bad Request) para requisições inválidas ou 500 (Internal Server Error) para erros internos do servidor.
    Para obter informações mais detalhadas sobre os endpoints e os modelos de dados, consulte a documentação da API ou o código-fonte do projeto.
