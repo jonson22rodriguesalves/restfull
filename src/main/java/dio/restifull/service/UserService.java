@@ -8,8 +8,7 @@ public interface UserService {
 
     User create(User userToCreate);
 
-    User update(Long id, User userToUpdate);
+    User update(Long id, User userToUpdate); // Correção: User maiúsculo
 
-    void delete(Long id);
+    boolean delete(Long id);
 }
-

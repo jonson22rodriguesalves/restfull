@@ -1,75 +1,90 @@
 package dio.restifull.service.impl;
 
-import dio.restifull.domain.model.User;
-import dio.restifull.domain.repository.UserRepository;
+import dio.restifull.domain.model.*;
+import dio.restifull.domain.repository.*;
 import dio.restifull.service.UserService;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+    private final AccountRepository accountRepository;
+    private final CardRepository cardRepository;
+    private final FeatureRepository featureRepository;
+    private final NewsRepository newsRepository;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, AccountRepository accountRepository, CardRepository cardRepository, FeatureRepository featureRepository, NewsRepository newsRepository) {
         this.userRepository = userRepository;
+        this.accountRepository = accountRepository;
+        this.cardRepository = cardRepository;
+        this.featureRepository = featureRepository;
+        this.newsRepository = newsRepository;
     }
 
     @Override
     public User findById(Long id) {
-        return userRepository.findById(id).orElseThrow(NoSuchElementException::new);
+        return userRepository.findById(id).orElseThrow(() -> new NoSuchElementException("User not found"));
     }
 
     @Override
     public User create(User userToCreate) {
-        if (userRepository.existsByAccount_Number(userToCreate.getAccount().getNumber())) {
-            throw new DuplicateAccountNumberException("This Account number already exists.");
+        if (userRepository.existsByAccountNumber(userToCreate.getAccount().getNumber())) {
+            throw new IllegalArgumentException("This Account number already exists.");
         }
         return userRepository.save(userToCreate);
     }
 
     @Override
-    @Transactional
     public User update(Long id, User userToUpdate) {
-        if (!userRepository.existsById(id)) {
-            throw new NoSuchElementException("User not found with ID: " + id);
+        Optional<User> existingUserOptional = userRepository.findById(id);
+
+        if (existingUserOptional.isPresent()) {
+            User existingUser = existingUserOptional.get();
+
+            // Validar IDs dos objetos relacionados
+            validateRelatedObjectIds(userToUpdate);
+
+            // Atualizar os dados do usuário
+            userToUpdate.setId(existingUser.getId());
+            return userRepository.save(userToUpdate);
+        } else {
+            throw new NoSuchElementException("User not found with id: " + id);
         }
-
-        User existingUser = userRepository.findById(id).orElseThrow(NoSuchElementException::new);
-
-        String newAccountNumber = userToUpdate.getAccount().getNumber();
-        String existingAccountNumber = existingUser.getAccount().getNumber();
-
-        logger.info("Updating user with ID: {}, New Account Number: {}, Existing Account Number: {}", id, newAccountNumber, existingAccountNumber);
-
-        if (!existingAccountNumber.equals(newAccountNumber)) {
-            logger.info("Account number changed. Checking for duplicates.");
-            if (userRepository.existsByAccount_Number(newAccountNumber)) {
-                logger.warn("Duplicate Account Number found for user ID {}: {}", id, newAccountNumber);
-                throw new DuplicateAccountNumberException("This Account number already exists.");
-            }
-        }
-
-        userToUpdate.setId(existingUser.getId());
-        return userRepository.save(userToUpdate);
     }
 
     @Override
-    public void delete(Long id) {
-        if (!userRepository.existsById(id)) {
-            throw new NoSuchElementException("User not found with ID: " + id);
+    public boolean delete(Long id) {
+        if (userRepository.existsById(id)) {
+            userRepository.deleteById(id);
+            return true;
         }
-        userRepository.deleteById(id);
+        return false;
     }
 
-    public static class DuplicateAccountNumberException extends IllegalArgumentException {
-        public DuplicateAccountNumberException(String message) {
-            super(message);
+    private void validateRelatedObjectIds(User user) {
+        if (accountRepository.findById(user.getAccount().getId()).isEmpty()) {
+            throw new NoSuchElementException("Account not found");
+        }
+        if (cardRepository.findById(user.getCard().getId()).isEmpty()) {
+            throw new NoSuchElementException("Card not found");
+        }
+        if (user.getFeatures() != null) {
+            for (Feature feature : user.getFeatures()) {
+                if (featureRepository.findById(feature.getId()).isEmpty()) {
+                    throw new NoSuchElementException("Feature not found");
+                }
+            }
+        }
+        if (user.getNews() != null) {
+            for (News news : user.getNews()) {
+                if (newsRepository.findById(news.getId()).isEmpty()) {
+                    throw new NoSuchElementException("News not found");
+                }
+            }
         }
     }
 }

@@ -1,20 +1,8 @@
 package dio.restifull.domain.model;
 
-import java.util.List;
+import jakarta.persistence.*;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import java.util.List;
 
 @Entity(name = "tb_user")
 public class User {
@@ -23,34 +11,19 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Nome não pode estar em branco")
-    @Size(min = 3, max = 100, message = "Nome deve ter entre 3 e 100 caracteres")
     private String name;
 
-    @Valid
-    @NotNull(message = "Conta não pode ser nula")
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne(cascade = CascadeType.ALL)
     private Account account;
 
-    @Valid
-    @NotNull(message = "Cartão não pode ser nulo")
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne(cascade = CascadeType.ALL)
     private Card card;
 
-    @Valid
-    @NotNull(message = "Lista de features não pode ser nula")
-    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Feature> features;
 
-    @Valid
-    @NotNull(message = "Lista de notícias não pode ser nula")
-    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<News> news;
-
-    @ManyToMany(mappedBy = "users") // Alterado para ManyToMany
-    private List<Produt> produtos;
-
-    // ... (outros métodos)
 
     public Long getId() {
         return id;
@@ -100,11 +73,4 @@ public class User {
         this.news = news;
     }
 
-    public List<Produt> getProdutos() {
-        return produtos;
-    }
-
-    public void setProdutos(List<Produt> produtos) {
-        this.produtos = produtos;
-    }
 }
