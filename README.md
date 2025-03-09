@@ -49,13 +49,13 @@ classDiagram
 
 Principais Tecnologias
 
-Java 17: Adotaremos a versão LTS mais recente do Java para explorar as inovações desta linguagem robusta e amplamente utilizada.
-Spring Boot 3: Implementaremos a versão mais recente do Spring Boot, maximizando a produtividade do desenvolvedor com sua poderosa autoconfiguração.
-Spring Data JPA: Simplificaremos a camada de acesso a dados com o Spring Data JPA, facilitando a integração com bancos de dados SQL.
-OpenAPI (Swagger): Criaremos documentação de API eficaz e clara com o OpenAPI (Swagger), alinhada à alta produtividade do Spring Boot.
-Railway: Facilitaremos o deploy e monitoramento das soluções na nuvem com o Railway, que oferece bancos de dados como serviço e pipelines de CI/CD.
-IA Gemini: Adicionaremos o uso da tecnologia IA Gemini para auxiliar no desenvolvimento, otimização e implementação de soluções mais inteligentes e eficientes.
-
+1. Java 17: Adotaremos a versão LTS mais recente do Java para explorar as inovações desta linguagem robusta e amplamente utilizada.
+2. Spring Boot 3: Implementaremos a versão mais recente do Spring Boot, maximizando a produtividade do desenvolvedor com sua poderosa autoconfiguração.
+3. Spring Data JPA: Simplificaremos a camada de acesso a dados com o Spring Data JPA, facilitando a integração com bancos de dados SQL.
+4. OpenAPI (Swagger): Criaremos documentação de API eficaz e clara com o OpenAPI (Swagger), alinhada à alta produtividade do Spring Boot.
+5. Railway: Facilitaremos o deploy e monitoramento das soluções na nuvem com o Railway, que oferece bancos de dados como serviço e pipelines de CI/CD.
+6. IA Gemini: Adicionaremos o uso da tecnologia IA Gemini para auxiliar no desenvolvimento, otimização e implementação de soluções mais inteligentes e eficientes.
+ 
 ===========================================================================
 
 https://decola-tech-2025-production-72ce.up.railway.app/swagger-ui/index.html
