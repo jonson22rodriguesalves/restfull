@@ -54,6 +54,7 @@ Spring Boot 3: Implementaremos a versão mais recente do Spring Boot, maximizand
 Spring Data JPA: Simplificaremos a camada de acesso a dados com o Spring Data JPA, facilitando a integração com bancos de dados SQL.
 OpenAPI (Swagger): Criaremos documentação de API eficaz e clara com o OpenAPI (Swagger), alinhada à alta produtividade do Spring Boot.
 Railway: Facilitaremos o deploy e monitoramento das soluções na nuvem com o Railway, que oferece bancos de dados como serviço e pipelines de CI/CD.
+IA Gemini: Adicionaremos o uso da tecnologia IA Gemini para auxiliar no desenvolvimento, otimização e implementação de soluções mais inteligentes e eficientes.
 
 ===========================================================================
 
