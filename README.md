@@ -49,11 +49,11 @@ classDiagram
 
 Principais Tecnologias
 
-JJava 17 (LTS): Utilizaremos a versão de suporte de longo prazo mais recente do Java, garantindo acesso às últimas otimizações e funcionalidades da linguagem.
+Java 17 (LTS): Utilizaremos a versão de suporte de longo prazo mais recente do Java, garantindo acesso às últimas otimizações e funcionalidades da linguagem.
 Spring Boot 3: Implementaremos a aplicação utilizando a versão mais recente do Spring Boot, aproveitando seus recursos de autoconfiguração para aumentar a produtividade e reduzir o tempo de desenvolvimento.
 Spring Data JPA: Simplificaremos a camada de acesso a dados através do Spring Data JPA, facilitando a interação com bancos de dados relacionais.
 OpenAPI (Swagger): Geraremos documentação de API completa e interativa utilizando OpenAPI (Swagger), assegurando clareza e facilidade de uso para os consumidores da API.
-Railway: A plataforma Railway será utilizada para o deploy e monitoramento da aplicação em nuvem, além de prover serviços de banco de dados e integração contínua/entrega contínua (CI/CD)."
+Railway: A plataforma Railway será utilizada para o deploy e monitoramento da aplicação em nuvem, além de prover serviços de banco de dados e integração contínua/entrega contínua (CI/CD).
 ===========================================================================
 
 https://decola-tech-2025-production-72ce.up.railway.app/swagger-ui/index.html
