@@ -45,7 +45,11 @@ classDiagram
     User "1" -- "1" Card : possui
     User "1" -- "N" News : possui
 ````
+==============================================================================
 
+https://decola-tech-2025-production-72ce.up.railway.app/swagger-ui/index.html
+
+==============================================================================
 
 Documentação da API RESTful de Usuários e Produtos
 Este documento fornece exemplos de como interagir com a API RESTful de usuários e produtos, incluindo exemplos de requisições e respostas para as operações de criação e atualização.
