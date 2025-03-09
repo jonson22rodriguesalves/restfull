@@ -2,17 +2,19 @@ spring:
        datasource:
 
         # datasource1 (web):
-             # url: jdbc:postgresql://${RAILWAY_TCP_PROXY_DOMAIN}:${RAILWAY_TCP_PROXY_PORT}/${PGDATABASE}
-             # username: ${PGUSER}
-             # password: ${POSTGRES_PASSWORD}
-             # driver-class-name: org.postgresql.Driver
+              url1: jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}
+              url: jdbc:postgresql://${RAILWAY_TCP_PROXY_DOMAIN}:${RAILWAY_TCP_PROXY_PORT}/${PGDATABASE}
+              username: ${PGUSER}
+              password: ${POSTGRES_PASSWORD}
+              password1: ${PGPASSWORD}
+              driver-class-name: org.postgresql.Driver
 
         #datasource2 (local):
-              url: jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}
-              username: ${PGUSER}
-              password: ${PGPASSWORD}
-              port: ${PORT}
-              driver-class-name: org.postgresql.Driver
+              #url: jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}
+              #username: ${PGUSER}
+              #password: ${PGPASSWORD}
+              #port: ${PORT}
+              #driver-class-name: org.postgresql.Driver
 
 
        jpa:
