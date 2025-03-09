@@ -62,6 +62,50 @@ https://decola-tech-2025-production-72ce.up.railway.app/swagger-ui/index.html
 
 ===========================================================================
 
+Descrição do Projeto:
+* 
+* Este projeto consiste em uma API RESTful desenvolvida em Java utilizando o framework Spring Boot. O objetivo principal é fornecer um conjunto de serviços para gerenciar informações de usuários e produtos.
+* 
+* Funcionalidades Principais:
+* 
+* Gerenciamento de Usuários:
+* Criação, leitura, atualização e exclusão de usuários.
+* Autenticação e autorização de usuários (implementação de JWT).
+* Gerenciamento de Produtos:
+* Criação, leitura, atualização e exclusão de produtos.
+* Documentação da API:
+* A API é documentada utilizando o Swagger, facilitando o consumo e teste dos endpoints.
+* Segurança:
+* Implementação de segurança com o JWT para autenticação e autorização.
+* Persistencia de dados:
+* Utilização do Spring Data JPA para persistência de dados em banco de dados SQL.
+* Tecnologias Utilizadas:
+* 
+* Java 17
+* Spring Boot 3
+* Spring Data JPA
+* JWT
+* Swagger
+* Maven
+* Estrutura do Projeto:
+* 
+* O projeto segue uma estrutura de pacotes organizada, separando as responsabilidades em:
+* 
+* controller: Lida com as requisições HTTP e roteamento.
+* service: Contém a lógica de negócio da aplicação.
+* repository: Responsável pela interação com o banco de dados.
+* model: Define as entidades de domínio.
+* config: Configurações da aplicação.
+* security: Implementação da segurança.
+* Observações:
+* 
+* O projeto demonstra boas práticas de desenvolvimento RESTful, como o uso de verbos HTTP adequados e códigos de status.
+* A documentação com Swagger facilita o consumo da API.
+* A implementação de segurança com JWT garante que os endpoints estejam protegidos.
+* Em resumo, este projeto é uma API RESTful bem estruturada e documentada, que fornece funcionalidades básicas de gerenciamento de usuários e produtos, com segurança implementada.
+
+===========================================================================
+
 Documentação da API RESTful de Usuários e Produtos
 Este documento fornece exemplos de como interagir com a API RESTful de usuários e produtos, incluindo exemplos de requisições e respostas para as operações de criação e atualização.
 
