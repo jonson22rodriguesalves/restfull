@@ -40,10 +40,35 @@ classDiagram
         + getIcon() : String
         + getDescription() : String
     }
+    
+    class Product {
+        - id : String
+        - name : String
+        - description : String
+        - value : Double
+        + getId() : String
+        + getName() : String
+        + getDescription() : String
+        + getValue() : Double
+    }
+    class Vendas {
+        - id : String
+        - user : User
+        - product : Product
+        - date : Date
+        + getId() : String
+        + getUser() : User
+        + getProduct() : Product
+        + getDate() : Date
+    }
+       
     User "1" -- "1" Account : possui
     User "1" -- "N" Feature : possui
     User "1" -- "1" Card : possui
     User "1" -- "N" News : possui
+    Vendas "N" -- "1" User : realiza
+    Vendas "N" -- "1" Product : vendido
+    
 ````
 ===========================================================================
 
